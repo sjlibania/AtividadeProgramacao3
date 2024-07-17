@@ -4,48 +4,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex10
+namespace Lista3Ex11
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int[] valores = new int[10];
-            int soma = 0;
+            int n;
             int maiorValor = int.MinValue;
+            int menorValor = int.MaxValue;
+            int soma = 0;
+            int positivos = 0;
+            int negativos = 0;
 
-            Console.WriteLine("Digite 10 valores positivos:");
-
-            for (int i = 0; i < 10; i++)
+            
+            do
             {
-                int valor = 0;
-                bool entradaValida = false;
+                Console.Write("Digite a quantidade de números (positivo e menor que 20): ");
+                n = int.Parse(Console.ReadLine());
 
-                while (!entradaValida)
+                if (n <= 0 || n >= 20)
                 {
-                    Console.Write($"Valor {i + 1}: ");
-                    if (int.TryParse(Console.ReadLine(), out valor) && valor > 0)
-                    {
-                        entradaValida = true;
-                        valores[i] = valor;
-                        soma += valor;
-                        if (valor > maiorValor)
-                        {
-                            maiorValor = valor;
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Erro: Por favor, insira um valor positivo.");
-                    }
+                    Console.WriteLine("Erro: A quantidade deve ser positiva e menor que 20.");
                 }
+
+            } while (n <= 0 || n >= 20);
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"Digite o valor {i + 1}: ");
+                int valor = int.Parse(Console.ReadLine());
+
+                
+                if (valor > maiorValor)
+                    maiorValor = valor;
+                if (valor < menorValor)
+                    menorValor = valor;
+
+              
+                soma += valor;
+
+                if (valor > 0)
+                    positivos++;
+                else if (valor < 0)
+                    negativos++;
             }
 
-            double media = soma / 10.0;
+           
+            double media = (double)soma / n;
 
-            Console.WriteLine($"O maior valor é: {maiorValor}");
-            Console.WriteLine($"A soma dos valores é: {soma}");
-            Console.WriteLine($"A média aritmética dos valores é: {media}");
+            double porcentagemPositivos = (double)positivos / n * 100;
+            double porcentagemNegativos = (double)negativos / n * 100;
+
+            Console.WriteLine($"Maior valor: {maiorValor}");
+            Console.WriteLine($"Menor valor: {menorValor}");
+            Console.WriteLine($"Soma dos valores: {soma}");
+            Console.WriteLine($"Média aritmética dos valores: {media}");
+            Console.WriteLine($"Porcentagem de valores positivos: {porcentagemPositivos}%");
+            Console.WriteLine($"Porcentagem de valores negativos: {porcentagemNegativos}%");
+
         }
     }
 }
