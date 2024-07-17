@@ -4,18 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex8
+namespace Lista3Ex9
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int soma = 0;
-            for (int i = 1; i <= 100; i++)
+            int n = 30;
+            long a = 1, b = 1;
+
+
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+
+
+            for (int i = 2; i < n; i++)
             {
-                soma += i;
+                long next = a + b;
+                Console.WriteLine(next);
+                a = b;
+                b = next;
             }
-            Console.WriteLine("A soma dos números inteiros de 1 a 100 é: " + soma);
         }
     }
 }
