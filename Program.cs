@@ -4,39 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex6
+namespace Lista3Ex7
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
-            int x;
-            int a;
-            int b;
-
-            do
+            for (int i = 1; i <= 20; i++)
             {
-                Console.Write("Digite um valor positivo para X: ");
-                x = int.Parse(Console.ReadLine());
-            } while (x <= 0);
+                Console.WriteLine($"Tabuada do {i}:");
+                for (int j = 1; j <= 10; j++)
+                {
+                    Console.WriteLine($"{i} x {j} = {i * j}");
+                }
 
-            
-            Console.Write("Digite o valor de A: ");
-            a = int.Parse(Console.ReadLine());
-
-            
-            do
-            {
-                Console.Write("Digite o valor de B (deve ser maior que A): ");
-                b = int.Parse(Console.ReadLine());
-            } while (b <= a);
-
-            Console.WriteLine($"Tabuada de {x} no intervalo de {b} para {a}:");
-            for (int i = b; i >= a; i--)
-            {
-                Console.WriteLine($"{x} x {i} = {x * i}");
+                Console.WriteLine("Pressione qualquer tecla para continuar para a próxima tabuada...");
+                Console.ReadKey();
+                Console.Clear();
             }
+
+            Console.WriteLine("Fim das tabuadas.");
+
         }
     }
 }
