@@ -4,65 +4,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex11
+namespace Lista3Ex12
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int n;
-            int maiorValor = int.MinValue;
-            int menorValor = int.MaxValue;
-            int soma = 0;
-            int positivos = 0;
-            int negativos = 0;
 
-            
+            char resposta;
+
             do
             {
-                Console.Write("Digite a quantidade de números (positivo e menor que 20): ");
-                n = int.Parse(Console.ReadLine());
-
-                if (n <= 0 || n >= 20)
+                Console.WriteLine("Digite a quantidade de números (positivo, menor que vinte): ");
+                int N;
+                while (!int.TryParse(Console.ReadLine(), out N) || N <= 0 || N >= 20)
                 {
-                    Console.WriteLine("Erro: A quantidade deve ser positiva e menor que 20.");
+                    Console.WriteLine("Quantidade inválida. Digite novamente (positivo, menor que vinte): ");
                 }
 
-            } while (n <= 0 || n >= 20);
-
-            for (int i = 0; i < n; i++)
-            {
-                Console.Write($"Digite o valor {i + 1}: ");
-                int valor = int.Parse(Console.ReadLine());
+                int[] numeros = new int[N];
+                int maior = int.MinValue;
+                int menor = int.MaxValue;
+                int soma = 0;
+                int positivos = 0;
+                int negativos = 0;
 
                 
-                if (valor > maiorValor)
-                    maiorValor = valor;
-                if (valor < menorValor)
-                    menorValor = valor;
+                for (int i = 0; i < N; i++)
+                {
+                    Console.Write($"Digite o {i + 1}º número: ");
+                    numeros[i] = int.Parse(Console.ReadLine());
 
-              
-                soma += valor;
+      
+                    if (numeros[i] > maior)
+                        maior = numeros[i];
+                    if (numeros[i] < menor)
+                        menor = numeros[i];
 
-                if (valor > 0)
-                    positivos++;
-                else if (valor < 0)
-                    negativos++;
-            }
+                    soma += numeros[i];
 
-           
-            double media = (double)soma / n;
+                    if (numeros[i] > 0)
+                        positivos++;
+                    else if (numeros[i] < 0)
+                        negativos++;
+                }
 
-            double porcentagemPositivos = (double)positivos / n * 100;
-            double porcentagemNegativos = (double)negativos / n * 100;
+                double media = (double)soma / N;
 
-            Console.WriteLine($"Maior valor: {maiorValor}");
-            Console.WriteLine($"Menor valor: {menorValor}");
-            Console.WriteLine($"Soma dos valores: {soma}");
-            Console.WriteLine($"Média aritmética dos valores: {media}");
-            Console.WriteLine($"Porcentagem de valores positivos: {porcentagemPositivos}%");
-            Console.WriteLine($"Porcentagem de valores negativos: {porcentagemNegativos}%");
+                double porcentagemPositivos = (double)positivos / N * 100;
+                double porcentagemNegativos = (double)negativos / N * 100;
 
+                
+                Console.WriteLine($"Maior valor: {maior}");
+                Console.WriteLine($"Menor valor: {menor}");
+                Console.WriteLine($"Soma dos valores: {soma}");
+                Console.WriteLine($"Média aritmética: {media:F2}");
+                Console.WriteLine($"Porcentagem de valores positivos: {porcentagemPositivos:F2}%");
+                Console.WriteLine($"Porcentagem de valores negativos: {porcentagemNegativos:F2}%");
+
+                Console.WriteLine("Deseja executar novamente? (S/N)");
+                resposta = char.ToUpper(Console.ReadKey().KeyChar);
+                Console.WriteLine();
+
+            } while (resposta == 'S');
         }
     }
 }
