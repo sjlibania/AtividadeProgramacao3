@@ -4,33 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ListaEx5
+namespace Lista3Ex6
 {
     internal class Program
     {
         static void Main(string[] args)
         {
 
-            int valor;
+            int x;
+            int a;
+            int b;
 
-            while (true)
+            do
             {
-                Console.Write("Digite um valor positivo: ");
-                if (int.TryParse(Console.ReadLine(), out valor) && valor > 0)
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Valor inválido. Por favor, digite um número inteiro positivo.");
-                }
-            }
+                Console.Write("Digite um valor positivo para X: ");
+                x = int.Parse(Console.ReadLine());
+            } while (x <= 0);
 
+            
+            Console.Write("Digite o valor de A: ");
+            a = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"\nTabuada do {valor}:");
-            for (int i = 1; i <= 10; i++)
+            
+            do
             {
-                Console.WriteLine($"{valor} x {i} = {valor * i}");
+                Console.Write("Digite o valor de B (deve ser maior que A): ");
+                b = int.Parse(Console.ReadLine());
+            } while (b <= a);
+
+            Console.WriteLine($"Tabuada de {x} no intervalo de {b} para {a}:");
+            for (int i = b; i >= a; i--)
+            {
+                Console.WriteLine($"{x} x {i} = {x * i}");
             }
         }
     }
