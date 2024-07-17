@@ -4,34 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex3
+namespace ListaEx4
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            int numero = 5;
+
+            Console.WriteLine("Tabuada do número " + numero + ":");
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine(numero + " x " + i + " = " + (numero * i));
 
 
-            string sexo = string.Empty;
-
-            while (sexo != "F" && sexo != "M")
-                {
-                    Console.Write("Por favor, insira o sexo (F ou M): ");
-                    sexo = Console.ReadLine().ToUpper();
-
-                    if (sexo != "F" && sexo != "M")
-                    {
-                        Console.WriteLine("Entrada inválida. Tente novamente.");
-                    }
-                }
-
-                Console.WriteLine("Sexo inserido: " + sexo);
             }
         }
-
-
-
-
     }
-
-
+}
