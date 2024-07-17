@@ -4,27 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex7
+namespace Lista3Ex8
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 20; i++)
+            int soma = 0;
+            for (int i = 1; i <= 100; i++)
             {
-                Console.WriteLine($"Tabuada do {i}:");
-                for (int j = 1; j <= 10; j++)
-                {
-                    Console.WriteLine($"{i} x {j} = {i * j}");
-                }
-
-                Console.WriteLine("Pressione qualquer tecla para continuar para a próxima tabuada...");
-                Console.ReadKey();
-                Console.Clear();
+                soma += i;
             }
-
-            Console.WriteLine("Fim das tabuadas.");
-
+            Console.WriteLine("A soma dos números inteiros de 1 a 100 é: " + soma);
         }
     }
 }
