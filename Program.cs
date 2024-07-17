@@ -4,27 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex9
+namespace Lista3Ex10
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int n = 30;
-            long a = 1, b = 1;
+            int[] valores = new int[10];
+            int soma = 0;
+            int maiorValor = int.MinValue;
 
+            Console.WriteLine("Digite 10 valores positivos:");
 
-            Console.WriteLine(a);
-            Console.WriteLine(b);
-
-
-            for (int i = 2; i < n; i++)
+            for (int i = 0; i < 10; i++)
             {
-                long next = a + b;
-                Console.WriteLine(next);
-                a = b;
-                b = next;
+                int valor = 0;
+                bool entradaValida = false;
+
+                while (!entradaValida)
+                {
+                    Console.Write($"Valor {i + 1}: ");
+                    if (int.TryParse(Console.ReadLine(), out valor) && valor > 0)
+                    {
+                        entradaValida = true;
+                        valores[i] = valor;
+                        soma += valor;
+                        if (valor > maiorValor)
+                        {
+                            maiorValor = valor;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Erro: Por favor, insira um valor positivo.");
+                    }
+                }
             }
+
+            double media = soma / 10.0;
+
+            Console.WriteLine($"O maior valor é: {maiorValor}");
+            Console.WriteLine($"A soma dos valores é: {soma}");
+            Console.WriteLine($"A média aritmética dos valores é: {media}");
         }
     }
 }
