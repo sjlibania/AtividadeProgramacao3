@@ -4,33 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista3Ex1
+namespace Lista3Ex2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int a;
-            /* do/while
-             
+            int primeiroValor;
+            int segundoValor;
+
+            Console.WriteLine("Digite o primeiro valor:");
+            primeiroValor = int.Parse(Console.ReadLine());
+
             do
-            (    
-                 Console.Write("Digite número Positivo:  ");
-                 a = int.Parse(Console.ReadLine());
-
-            )
-            while (a <= 0);
-            Console.WriteLine("O número digitado foi (0)", a);
-            */
-
-            a = 0;
-            while (a <= 0)
             {
-                Console.Write("Digite numero positivo: ");
-                a = int.Parse(Console.ReadLine());
 
-            }
-            Console.WriteLine("O número digitado foi {0}", a);
+                Console.WriteLine("Digite o segundo valor:");
+                segundoValor = int.Parse(Console.ReadLine());
+
+                if (segundoValor <= primeiroValor)
+                {
+                    Console.WriteLine("O segundo valor deve ser maior que o primeiro. Tente novamente.");
+                }
+
+            } while (segundoValor <= primeiroValor);
+
+            // Aqui, segundoValor é garantidamente maior que primeiroValor
+            Console.WriteLine($"Você digitou corretamente os valores: {primeiroValor} e {segundoValor}");
 
 
 
